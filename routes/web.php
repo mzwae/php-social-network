@@ -21,10 +21,10 @@ Route::get('/', [
   'as' => 'home',
 ]);
 
-Route::get('/alert', function(){
-  return redirect()->route('home')->with('info', 'You have signed up!');
-});
+// Route::get('/alert', function(){
+//   return redirect()->route('home')->with('info', 'You have signed up!');
+// });
 Route::get('/signup', [
-  'users' => '\App\Http\Controllers\AuthController@getSignup',
+  'uses' => '\App\Http\Controllers\AuthController@getSignup',
   'as' => 'auth.signup',
 ]);
