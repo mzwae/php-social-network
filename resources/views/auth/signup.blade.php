@@ -3,30 +3,32 @@
 <div class="row">
   <div class="col-lg-6">
     <form class="form-vertical" role="form" method="post" action="{{route('auth.signup')}}">
-      <div class="form-group{{ $errors->has('email') ? ' has-error' : ''}}">
+      <div class="form-group">
         <label for="email" class="control-label">Your email address</label>
-        <input type="text" name="email" class="form-control" id="email" value="{{ Request::old('email') ?: ''}}">
+        <input class="form-control {{ $errors->has('email') ? ' is-invalid' : ''}}"  type="email" name="email" id="email" value="">
         @if ($errors->has('email'))
-          <span class="help-block">{{ $errors->first('email') }}</span>
+          <span class="help-block {{ $errors->has('email') ? ' text-danger' : ''}}">
+            {{ $errors->first('email') }}
+          </span>
         @endif
       </div>
-      <div class="form-group{{ $errors->has('username') ? ' has-error' : ''}}">
+      <div class="form-group">
         <label for="username" class="control-label">Choose a username</label>
-        <input type="text" name="username" value="" class="form-control" id="username">
+        <input class="form-control {{ $errors->has('email') ? ' is-invalid' : ''}}" type="text" name="username" value="" id="username">
         @if ($errors->has('username'))
-          <span class="help-block">{{ $errors->first('username')}}</span>
+          <span class="help-block {{ $errors->has('email') ? ' text-danger' : ''}}">{{ $errors->first('username')}}</span>
         @endif
       </div>
-      <div class="form-group{{ $errors->has('password') ? ' has-error' : ''}}">
-        <label for="username" class="control-label">Choose a password</label>
-        <input type="password" name="password" value="" class="form-control" id="password">
+      <div class="form-group">
+        <label for="password" class="control-label">Choose a password</label>
+        <input class="form-control {{ $errors->has('email') ? ' is-invalid' : ''}}" type="password" name="password" value="" id="password">
         @if ($errors->has('password'))
-          <span class="help-block">{{ $errors->first('password')}}</span>
+          <span class="help-block {{ $errors->has('email') ? ' text-danger' : ''}}">{{ $errors->first('password')}}</span>
         @endif
       </div>
 
       <div class="form-group">
-        <button type="submit" name="_token" value="{{ Session::token()}}">Submit</button>
+        <button class="btn btn-success" type="submit" name="_token" value="{{ Session::token()}}">Submit</button>
       </div>
     </form>
   </div>
