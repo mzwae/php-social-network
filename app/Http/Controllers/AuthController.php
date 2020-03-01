@@ -14,7 +14,8 @@ class AuthController extends Controller
     return view('auth.signup');
   }
 
-  public function postSignup(Request $request){
+  public function postSignup(Request $request)
+  {
     $this->validate($request, [
       'email' => 'required|unique:users|email|max:225',
       'username' => 'required|unique:users|alpha_dash|max:20',
@@ -30,4 +31,14 @@ class AuthController extends Controller
     ->route('home')
     ->with('info', 'Your account has been created and you can now sign in.');
   }
-}
+
+  public function getSignin()
+  {
+    return view('auth.signin');
+  }
+
+  public function postSignin()
+  {
+
+  }
+  }
