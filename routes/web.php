@@ -33,3 +33,7 @@ Route::get('/signup', [
 Route::post('/signup', [
   'uses' => '\App\Http\Controllers\AuthController@postSignup',
 ]);
+
+Route::get('/signin', [
+  'uses' => '\App\Http\Controllers\AuthController@getSignin',
+]);

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Social Web</a>
+      <a class="navbar-brand" href="<?=url('/')?>">Social Web</a>
     </div>
     <div class="collapse navbar-collapse">
       @if (Auth::check())
@@ -27,7 +27,7 @@
             <a class="nav-link" href="<?=url('/')?>/signup">Sign up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Sign in</a>
+            <a class="nav-link" href="<?=url('/')?>/signin">Sign in</a>
           </li>
         @endif
       </ul>
