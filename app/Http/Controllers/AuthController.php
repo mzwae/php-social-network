@@ -39,6 +39,6 @@ class AuthController extends Controller
 
   public function postSignin()
   {
-
+    dd('Sign in');
   }
   }

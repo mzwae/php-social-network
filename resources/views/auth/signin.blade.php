@@ -20,6 +20,7 @@
             <div class="form-gorup">
                 <button type="submit" class="btn btn-success">Sign in</button>
             </div>
+            <input type="hidden" name="_token" value="{{Session::token()}}">
         </form>
     </div>
 </div>
