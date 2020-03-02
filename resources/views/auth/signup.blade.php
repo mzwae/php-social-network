@@ -8,7 +8,7 @@
         <label for="email" class="control-label">
           Your email address
         </label>
-        <input class="form-control {{ $errors->has('email') ? ' is-invalid' : ''}}"  type="email" name="email" id="email" value="{{ Request::old('email') ?: ''}}">
+        <input class="form-control {{ $errors->has('email') ? ' is-invalid' : ''}}"  type="email" name="email" id="email" value="{{Request::old('email') ?: ''}}">
         @if ($errors->has('email'))
           <span class="help-block text-danger">
             {{ $errors->first('email') }}
@@ -30,7 +30,7 @@
         <label for="password" class="control-label">
           Choose a password
         </label>
-        <input class="form-control {{ $errors->has('password') ? ' is-invalid' : ''}}" type="password" name="password" value="{{Request::old('password') ?: ''}}" id="password">
+        <input class="form-control {{ $errors->has('password') ? ' is-invalid' : ''}}" type="password" name="password" id="password">
         @if ($errors->has('password'))
           <span class="help-block text-danger">
             {{$errors->first('password')}}
