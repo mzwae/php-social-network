@@ -24,10 +24,10 @@
           <li><a href="#">Sign Out</a></li>
         @else
           <li class="nav-item">
-            <a class="nav-link" href="<?=url('/')?>/signup">Sign up</a>
+            <a class="nav-link" href="{{route('auth.signup')}}">Sign up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?=url('/')?>/signin">Sign in</a>
+            <a class="nav-link" href="{{route('auth.signin')}}">Sign in</a>
           </li>
         @endif
       </ul>
