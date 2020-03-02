@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-6">
         <form class="form-vertical" role="form" method="post" action="{{route('auth.signin')}}">
-            <div class="form-group">
+            <div class="form-group {{ $errors->has('email') ? ' is-invalid' : ''}}">
                 <label for="email" class="control-label">Email</label>
                 <input type="text" name="email" class="form-control" id="email">
             </div>
