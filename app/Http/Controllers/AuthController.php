@@ -1,5 +1,7 @@
 <?php
 namespace App\Http\Controllers;
+
+use Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -43,6 +45,10 @@ class AuthController extends Controller
       'email' => 'required',
       'password' => 'required',
     ]);
-    dd('all ok');
+    if (!Auth::attempt($request->only(['email', 'password']), $request->has('remember'))) {
+      return redirect()->back()->with('info', 'Could not sign you in wth those details.');
+    }
+
+    return redirect()->route('home')->with('info', 'You are now signed in.');
   }
   }
