@@ -42,3 +42,8 @@ Route::get('/signin', [
 Route::post('/signin', [
   'uses' => '\App\Http\Controllers\AuthController@postSignin',
 ]);
+
+Route::get('/signout', [
+  'uses' => '\App\Http\Controllers\AuthController@getSignout',
+  'as' => 'auth.signout',
+]);
