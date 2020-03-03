@@ -7,8 +7,6 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-
-
             @if (Auth::check())
             <li class="nav-item active">
                 <a class="nav-link" href="#">Timeline <span class="sr-only">(current)</span></a>
@@ -16,11 +14,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Friends</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Update Profile</a>
-            </li>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search People" aria-label="Search">
+
+            <form class="form-inline my-2 my-lg-0 ml-4">
+                <input class="form-control mr-sm-2" type="search" placeholder="Find People" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
             @endif
@@ -28,7 +24,10 @@
         <ul class="navbar-nav mr-right">
             @if (Auth::check())
             <li class="nav-item">
-                <a class="nav-link" href="#">Jack</a>
+                <a class="nav-link" href="#">{{Auth::user()->getNameOrUsername()}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Update Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Sign Out</a>
