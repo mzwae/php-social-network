@@ -16,7 +16,7 @@
             </li>
 
             <form class="form-inline my-2 my-lg-0 ml-4" action="{{route('search.results')}}">
-                <input class="form-control mr-sm-2" type="search" placeholder="Find People" aria-label="Search">
+                <input name="query" class="form-control mr-sm-2" type="search" placeholder="Find People" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
             @endif

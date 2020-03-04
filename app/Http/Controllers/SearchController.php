@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class searchController extends Controller
+class SearchController extends Controller
 {
-    public function getResults(){
+    public function getResults(Request $request){
+      $query = $request->input('query');
+      dd($query);
       return view('search.results');
     }
 }
