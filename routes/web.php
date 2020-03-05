@@ -57,3 +57,8 @@ Route::get('/search', [
   'uses' => '\App\Http\Controllers\SearchController@getResults',
   'as' => 'search.results',
 ]);
+/*User Profile*/
+Route::get('/user/{username}', [
+  'uses' => '\App\Http\Controllers\ProfileController@getProfile',
+  'as' => 'profile.index',
+]);
