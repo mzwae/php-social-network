@@ -44,6 +44,10 @@ class User extends Authenticatable
       return $this->getName() ? : $this->username;
     }
 
+    public function getAvatarURL(){
+      return "https://www.gravatar.com/avatar/{{md5($this->email)}}?d=mm&s=40";
+    }
+
     /**
      * The attributes that should be cast to native types.
      *
