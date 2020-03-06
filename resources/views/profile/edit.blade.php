@@ -35,6 +35,7 @@
               Update
             </button>
           </div>
+          <input type="hidden" name="_token" value="Session::token()">
         </form>
       </div>
   </div>

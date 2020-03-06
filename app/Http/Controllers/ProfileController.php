@@ -24,7 +24,7 @@ class ProfileController extends Controller
 
 
     public function postEdit(){
-
+      dd('all ok');
     }
 
 
