@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Auth;
 class ProfileController extends Controller
 {
     public function getProfile($username)
@@ -29,7 +29,16 @@ class ProfileController extends Controller
         'last_name' => 'alpha|max:50',
         'location' => 'max:20'
       ]);
-      dd('all ok');
+      Auth::user()->update([
+        'first_name' => $request->input('first_name'),
+        'last_name' => $request->input('last_name'),
+        'location' => $request->input('location')
+      ]);
+
+      return redirect()
+      ->route('profile.edit')
+      ->with('info', 'Your profile has been successfully updated.');
+
     }
 
 
