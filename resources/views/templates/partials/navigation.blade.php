@@ -29,7 +29,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Update Profile</a>
+                <a class="nav-link" href="{{route('profile.edit')}}">Update Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('auth.signout')}}">Sign Out</a>
