@@ -1,7 +1,7 @@
 @extends('templates.default')
 
 @section('content')
-<h3>Your search for "{{Request::input('query')}}"</h3>
+<h3>Your search results for "{{Request::input('query')}}":</h3>
 @if (!$users->count())
   <p>No users found :(</p>
 @else
