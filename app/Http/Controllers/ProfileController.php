@@ -23,7 +23,7 @@ class ProfileController extends Controller
     }
 
 
-    public function postEdit(){
+    public function postEdit(Request $request){
       dd('all ok');
     }
 
