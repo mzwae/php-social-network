@@ -48,6 +48,24 @@ class User extends Authenticatable
       return "https://www.gravatar.com/avatar/{{md5($this->email)}}?d=mm&s=40";
     }
 
+    public function friendsOfMine()
+    {
+      return $this->belongsToMany('App\Models\User', 'friends', 'user_id', 'friend_id');
+    }
+
+    public function friendOf()
+    {
+      return $this->belongsToMany('App\Models\User', 'friends', 'friend_id', 'user_id');
+    }
+
+    public function friends()
+    {
+      return $this->friendsOfMine()
+      ->wherePivot('accepted', true)
+      ->get()
+      ->merge($this->friendOf()->wherePivot('accepted', true)->get());
+    }
+
     /**
      * The attributes that should be cast to native types.
      *
