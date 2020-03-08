@@ -9,7 +9,7 @@
         <ul class="navbar-nav mr-auto">
             @if (Auth::check())
             <li class="nav-item active">
-                <a class="nav-link" href="#">Timeline <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{route('home')}}">Timeline</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('friends.index')}}">Friends</a>
