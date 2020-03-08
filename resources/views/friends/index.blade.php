@@ -12,7 +12,14 @@
         @endif
     </div>
     <div class="col-lg-6">
-        Friend Requests
+       <h4>Friend Requests</h4>
+       @if (!$requests->count())
+          <p>You have no friend requests, yet.</p>
+       @else
+           @foreach ($requests as $user)
+               @include('user.partials.userblock')
+           @endforeach
+       @endif
     </div>
 </div>
 @endsection

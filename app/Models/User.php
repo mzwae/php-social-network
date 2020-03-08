@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -28,42 +27,50 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function getName(){
-      if ($this->first_name && $this->last_name) {
-        return "{$this->first_name} {$this->last_name}";
-      }
+    public function getName()
+    {
+        if ($this->first_name && $this->last_name) {
+            return "{$this->first_name} {$this->last_name}";
+        }
 
-      if ($this->first_name) {
-        return $this->first_name;
-      }
+        if ($this->first_name) {
+            return $this->first_name;
+        }
 
-      return null;
+        return null;
     }
 
-    public function getNameOrUsername(){
-      return $this->getName() ? : $this->username;
+    public function getNameOrUsername()
+    {
+        return $this->getName() ?: $this->username;
     }
 
-    public function getAvatarURL(){
-      return "https://www.gravatar.com/avatar/{{md5($this->email)}}?d=mm&s=40";
+    public function getAvatarURL()
+    {
+        return "https://www.gravatar.com/avatar/{{md5($this->email)}}?d=mm&s=40";
     }
 
     public function friendsOfMine()
     {
-      return $this->belongsToMany('App\Models\User', 'friends', 'user_id', 'friend_id');
+        return $this->belongsToMany('App\Models\User', 'friends', 'user_id', 'friend_id');
     }
 
     public function friendOf()
     {
-      return $this->belongsToMany('App\Models\User', 'friends', 'friend_id', 'user_id');
+        return $this->belongsToMany('App\Models\User', 'friends', 'friend_id', 'user_id');
     }
 
     public function friends()
     {
-      return $this->friendsOfMine()
-      ->wherePivot('accepted', true)
-      ->get()
-      ->merge($this->friendOf()->wherePivot('accepted', true)->get());
+        return $this->friendsOfMine()
+            ->wherePivot('accepted', true)
+            ->get()
+            ->merge($this->friendOf()->wherePivot('accepted', true)->get());
+    }
+
+    public function friendRequests()
+    {
+        return $this->friendsOfMine()->wherePivot('accepted', false)->get();
     }
 
     /**
