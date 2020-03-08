@@ -57,6 +57,7 @@ Route::get('/search', [
   'uses' => '\App\Http\Controllers\SearchController@getResults',
   'as' => 'search.results',
 ]);
+
 /*User Profile*/
 Route::get('/user/{username}', [
   'uses' => '\App\Http\Controllers\ProfileController@getProfile',
@@ -69,5 +70,12 @@ Route::get('/profile/edit', [
 ]);
 Route::post('/profile/edit', [
   'uses' => '\App\Http\Controllers\ProfileController@postEdit',
+  'middleware' => ['auth'],
+]);
+
+/*Friends*/
+Route::get('/friends', [
+  'uses' => '\App\Http\Controllers\FriendController@getIndex',
+  'as' => 'friends.index',
   'middleware' => ['auth'],
 ]);

@@ -12,7 +12,7 @@
                 <a class="nav-link" href="#">Timeline <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Friends</a>
+                <a class="nav-link" href="{{route('friends.index')}}">Friends</a>
             </li>
 
             <form class="form-inline my-2 my-lg-0 ml-4" action="{{route('search.results')}}">
