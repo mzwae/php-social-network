@@ -79,3 +79,9 @@ Route::get('/friends', [
   'as' => 'friends.index',
   'middleware' => ['auth'],
 ]);
+
+// Test
+Route::get('/test', [
+  'uses' => '\App\Http\Controllers\test@displayTest',
+  'as' => 'app.test',
+]);

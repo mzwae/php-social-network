@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
 /public/storage
+/app/Http/Controllers/test.php
+/resources/views/test.blade.php
 /storage/*.key
 /vendor
 .env
