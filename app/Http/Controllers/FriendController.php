@@ -20,6 +20,10 @@ class FriendController extends Controller
     {
       $user = User::where('username', $username)->first();
 
+      if (Auth::user()->id === $user->id) {
+        return redirect()->route('home')->with('info', 'Not smart to add yourself to your friends list.');
+      }
+
       if (!$user) {
         return redirect()
         ->route('home')
@@ -46,6 +50,8 @@ class FriendController extends Controller
 
     public function getAccept($username){
       $user = User::where('username', $username)->first();
+
+
 
       if (!$user) {
         return redirect()
