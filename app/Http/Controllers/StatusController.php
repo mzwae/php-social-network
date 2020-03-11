@@ -9,6 +9,6 @@ class StatusController extends Controller
 {
   public function postStatus(Request $request)
   {
-    
+      dd('all ok');
   }
 }
