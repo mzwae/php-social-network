@@ -13,6 +13,7 @@
                 @endif
             </div>
             <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Update status</button>
+            <input type="hidden" name="_token" value="{{Session::token()}}">
         </form>
         <hr>
     </div>
