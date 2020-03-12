@@ -23,4 +23,14 @@ class StatusController extends Controller
     ->route('home')
     ->with('info', 'Your new status has been posted successfully :)');
   }
+
+  public function postReply(Request $request, $statusId)
+  {
+    $this->validate($request, [
+      "reply-{$statusId}" => 'required|max:1000'
+    ], [
+      'required' => 'The reply body is required, stop being lazy and write something.'
+    ]);
+    dd('all ok');
+  }
 }
