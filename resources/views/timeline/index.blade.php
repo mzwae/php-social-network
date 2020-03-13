@@ -57,9 +57,12 @@
 
                     <form role="form" action="{{route('status.reply', ['statusId' => $status->id])}}" method="post">
                         <div class="form-group">
-                            <textarea name="reply-{{$status->id}}" class="form-control" rows="2" placeholder="Reply to this status"></textarea>
+                            <textarea name="reply-{{$status->id}}" class="form-control {{$errors->has("reply-{$status->id}") ? ' is-invalid' : ''}}" rows="2" placeholder="Reply to this status"></textarea>
+                            @if ($errors->has("reply-{$status->id}"))
+                              <span class="help-block text-danger">{{$errors->first("reply-{$status->id}")}}</span>
+                            @endif
                         </div>
-                        <input type="submit" value="Reply" class="btn btn-default btn-sm">
+                        <input type="submit" value="Reply" class="btn btn-outline-primary">
                         <input type="hidden" name="_token" value="{{Session::token()}}">
                     </form>
                 </div>
