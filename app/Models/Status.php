@@ -26,4 +26,10 @@ class Status extends Model
     {
       return $this->hasMany('App\Models\Status', 'parent_id');
     }
+
+    public function likes()
+    {
+      return $this->morphMany('App\Models\Like', 'likeable');
+    }
+
 }
