@@ -14,7 +14,7 @@ class HomeController extends Controller
     if (Auth::check()) {
       $username = Auth::user()->getNameOrUsername();
 
-      $statuses = Status::where(function($query){
+      $statuses = Status::notReply()->where(function($query){
         return $query->where('user_id', Auth::user()->id)
         ->orWhereIn('user_id', Auth::user()->friends()->pluck('id'));
       })

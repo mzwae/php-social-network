@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Status;
 use Auth;
+
 
 class StatusController extends Controller
 {
@@ -31,6 +33,22 @@ class StatusController extends Controller
     ], [
       'required' => 'The reply body is required, stop being lazy and write something.'
     ]);
-    dd('all ok');
+    $status = Status::notReply()->find($statusId);
+
+    if (!$status) {
+      return redirect()->route('home');
+    }
+
+    if (!Auth::user()->isFriendsWith($status->user) && Auth::user()->id !== $status->user->id) {
+      return redirect()->route('home');
+    }
+
+    $reply = Status::create([
+    'body' => $request->input("reply-{$statusId}"),
+    'user_id' => Auth::user()->id
+  ]);
+
+    $status->replies()->save($reply);
+    return redirect()->back();
   }
 }
