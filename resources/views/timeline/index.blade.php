@@ -26,6 +26,7 @@
             <p>Therei's nothing in your timeline, yet.</p>
         @else
             @foreach ($statuses as $status)
+              {{-- status --}}
             <div class="media">
                 <a class="pull-left" href="{{route('profile.index',['username'=> $status->user->username])}}">
                     <img class="mr-3 rounded-circle" style="width:60px;" alt="{{$status->user->getNameOrUsername()}}" src="{{$status->user->getAvatarURL()}}">
@@ -38,21 +39,25 @@
                         <li class="list-inline-item"><a href="#">Like</a></li>
                         <li class="list-inline-item">10 likes</li>
                     </ul>
-{{--
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object" alt="" src="">
-                        </a>
-                        <div class="media-body">
-                            <h5 class="media-heading"><a href="#">Jack</a></h5>
-                            <p>Yes, it is lovely!</p>
-                            <ul class="list-inline">
-                                <li>8 minutes ago.</li>
-                                <li><a href="#">Like</a></li>
-                                <li>4 likes</li>
-                            </ul>
-                        </div>
-                    </div> --}}
+
+                {{-- reply --}}
+
+              @foreach ($status->replies as $reply)
+                <div class="media">
+                    <a class="pull-left" href="{{route('profile.index',['username'=> $reply->user->username])}}">
+                        <img class="mr-3 rounded-circle" style="width:60px;" alt="{{$reply->user->getNameOrUsername()}}" src="{{$reply->user->getAvatarURL()}}">
+                    </a>
+                    <div class="media-body">
+                        <h5 class="media-heading"><a href="{{route('profile.index',['username'=> $reply->user->username])}}">{{$reply->user->getNameOrUsername()}}</a></h5>
+                        <p>{{$reply->body}}</p>
+                        <ul class="list-inline">
+                            <li>{{$reply->created_at->diffForHumans()}}</li>
+                            <li><a href="#">Like</a></li>
+                            <li>4 likes</li>
+                        </ul>
+                    </div>
+                </div>
+              @endforeach
 
 
                     <form role="form" action="{{route('status.reply', ['statusId' => $status->id])}}" method="post">
