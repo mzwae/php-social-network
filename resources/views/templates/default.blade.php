@@ -24,12 +24,17 @@
             font: 1em sans-serif;
         }
 
+
         .online {
             background: green;
         }
 
         .offline {
             background: red;
+        }
+
+        .reply{
+          font-size: 0.8em;
         }
     </style>
 </head>

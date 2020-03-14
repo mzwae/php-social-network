@@ -52,11 +52,15 @@
 
               @foreach ($status->replies as $reply)
                 <div class="media">
-                    <a class="pull-left" href="{{route('profile.index',['username'=> $reply->user->username])}}">
-                        <img class="mr-3 rounded-circle" style="width:60px;" alt="{{$reply->user->getNameOrUsername()}}" src="{{$reply->user->getAvatarURL()}}">
+                    <a class="pull-left"  href="{{route('profile.index',['username'=> $reply->user->username])}}">
+                        <img class="mr-3 rounded-circle" style="width:40px;" alt="{{$reply->user->getNameOrUsername()}}" src="{{$reply->user->getAvatarURL()}}">
                     </a>
                     <div class="media-body">
-                        <h5 class="media-heading"><a href="{{route('profile.index',['username'=> $reply->user->username])}}">{{$reply->user->getNameOrUsername()}}</a></h5>
+                        <h5 class="media-heading">
+                          <a class="reply" href="{{route('profile.index',['username'=> $reply->user->username])}}">
+                            {{$reply->user->getNameOrUsername()}}
+                          </a>
+                        </h5>
                         <p>{{$reply->body}}</p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
