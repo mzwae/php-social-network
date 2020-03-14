@@ -35,9 +35,17 @@
                     <h4 class="media-heading"><a href="{{route('profile.index',['username'=> $status->user->username])}}">{{$status->user->getNameOrUsername()}}</a></h4>
                     <p>{{$status->body}}</p>
                     <ul class="list-inline">
-                        <li class="list-inline-item">{{$status->created_at->diffForHumans()}}</li>
-                        <li class="list-inline-item"><a href="{{route('status.like', ['statusId'=>$status->id])}}">Like</a></li>
-                        <li class="list-inline-item">10 likes</li>
+                        <li class="list-inline-item">
+                          {{$status->created_at->diffForHumans()}}
+                        </li>
+                        <li class="list-inline-item">
+                          <a href="{{route('status.like', ['statusId'=>$status->id])}}">
+                            <i class="fas fa-thumbs-up"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          10 likes
+                        </li>
                     </ul>
 
                 {{-- reply --}}
@@ -56,7 +64,7 @@
                             </li>
                             <li class="list-inline-item">
                               <a href="{{route('status.like', ['statusId'=>$reply->id])}}">
-                                Like
+                                <i class="fas fa-thumbs-up"></i>
                               </a>
                             </li>
                             <li class="list-inline-item">
