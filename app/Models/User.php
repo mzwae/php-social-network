@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Status;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Status;
 
 class User extends Authenticatable
 {
@@ -107,8 +107,8 @@ class User extends Authenticatable
     public function acceptFriendRequest(User $user)
     {
         $this->friendRequests()->where('id', $user->id)->first()->pivot->update([
-        'accepted' =>true,
-      ]);
+            'accepted' => true,
+        ]);
     }
 
     public function isFriendsWith(User $user)
@@ -118,12 +118,12 @@ class User extends Authenticatable
 
     public function hasLikedStatus(Status $status)
     {
-      return (bool) $status
-      ->likes
-      ->where('likeable_id', $status->id)
-      ->where('likeable_type', get_class($status))
-      ->where('user_id', $this->id)
-      ->count();
+        return (bool) $status
+            ->likes
+            ->where('likeable_id', $status->id)
+            ->where('likeable_type', get_class($status))
+            ->where('user_id', $this->id)
+            ->count();
     }
 
     /**
