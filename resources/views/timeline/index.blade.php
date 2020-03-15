@@ -38,11 +38,16 @@
                         <li class="list-inline-item">
                           {{$status->created_at->diffForHumans()}}
                         </li>
+
+                        {{-- A user should not be able to like his own statuses --}}
+                        @if ($status->user->id !== Auth::user()->id)
                         <li class="list-inline-item">
                           <a href="{{route('status.like', ['statusId'=>$status->id])}}">
                             <i class="fas fa-thumbs-up"></i>
                           </a>
                         </li>
+                        @endif
+                      
                         <li class="list-inline-item">
                           10 likes
                         </li>
@@ -66,11 +71,16 @@
                             <li class="list-inline-item">
                               {{$reply->created_at->diffForHumans()}}
                             </li>
+
+                            {{-- A user shuold not be able to like his own reply --}}
+                            @if ($reply->user->id !== Auth::user()->id)
                             <li class="list-inline-item">
                               <a href="{{route('status.like', ['statusId'=>$reply->id])}}">
                                 <i class="fas fa-thumbs-up"></i>
                               </a>
                             </li>
+                            @endif
+                          
                             <li class="list-inline-item">
                               4 likes
                             </li>

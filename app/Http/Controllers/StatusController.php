@@ -2,36 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Status;
+use App\Models\User;
 use Auth;
+use Illuminate\Http\Request;
 
 class StatusController extends Controller
 {
     public function postStatus(Request $request)
     {
         $this->validate($request, [
-      'status' => 'required|max:1000',
-    ]);
-
+            'status' => 'required|max:1000',
+        ]);
 
         Auth::user()->statuses()->create([
-      'body' => $request->input('status'),
-    ]);
+            'body' => $request->input('status'),
+        ]);
 
         return redirect()
-    ->route('home')
-    ->with('info', 'Your new status has been posted successfully :)');
+            ->route('home')
+            ->with('info', 'Your new status has been posted successfully :)');
     }
 
     public function postReply(Request $request, $statusId)
     {
         $this->validate($request, [
-      "reply-{$statusId}" => 'required|max:1000'
-    ], [
-      'required' => 'The reply body is required, stop being lazy and write something.'
-    ]);
+            "reply-{$statusId}" => 'required|max:1000',
+        ], [
+            'required' => 'The reply body is required, stop being lazy and write something.',
+        ]);
         $status = Status::notReply()->find($statusId);
 
         if (!$status) {
@@ -43,13 +42,14 @@ class StatusController extends Controller
         }
 
         $reply = Status::create([
-    'body' => $request->input("reply-{$statusId}"),
-    'user_id' => Auth::user()->id
-  ]);
+            'body' => $request->input("reply-{$statusId}"),
+            'user_id' => Auth::user()->id,
+        ]);
 
         $status->replies()->save($reply);
         return redirect()->back();
     }
+/* -------------------------------------------------------------------------- */
 
     /*Register user likes*/
     public function getLike($statusId)
@@ -74,5 +74,6 @@ class StatusController extends Controller
         Auth::user()->likes()->save($like);
 
         return redirect()->back();
+
     }
 }
