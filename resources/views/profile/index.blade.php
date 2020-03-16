@@ -12,7 +12,7 @@
         <div class="col-lg-5">
             <!-- Timeline statuses and replies -->
             @if (!$statuses->count())
-                <p>Therei's nothing in your timeline, yet.</p>
+                <p>There's nothing in your timeline, yet.</p>
             @else
                 @foreach ($statuses as $status)
                   {{-- status --}}
