@@ -29,7 +29,7 @@
                             </li>
     
                             {{-- A user should not be able to like his own statuses --}}
-                            @if ($status->user->id !== Auth::user()->id)
+                            @if ($status->user->isFriendsWith(Auth::user()))
                             <li class="list-inline-item">
                               <a href="{{route('status.like', ['statusId'=>$status->id])}}">
                                 <i class="fas fa-thumbs-up"></i>
@@ -62,7 +62,7 @@
                                 </li>
     
                                 {{-- A user shuold not be able to like his own reply --}}
-                                @if ($reply->user->id !== Auth::user()->id)
+                                @if ($reply->user->isFriendsWith(Auth::user()))
                                 <li class="list-inline-item">
                                   <a href="{{route('status.like', ['statusId'=>$reply->id])}}">
                                     <i class="fas fa-thumbs-up"></i>
@@ -79,6 +79,8 @@
                   @endforeach
     
     
+        
+                       @if ($authUserIsFriend || Auth::user()->id === $status->user_id)
                         <form role="form" action="{{route('status.reply', ['statusId' => $status->id])}}" method="post">
                             <div class="form-group">
                                 <textarea name="reply-{{$status->id}}" class="form-control {{$errors->has("reply-{$status->id}") ? ' is-invalid' : ''}}" rows="2" placeholder="Reply to this status"></textarea>
@@ -89,6 +91,7 @@
                             <input type="submit" value="Reply" class="btn btn-outline-primary">
                             <input type="hidden" name="_token" value="{{Session::token()}}">
                         </form>
+                        @endif 
                     </div>
                 </div>
                 <hr>

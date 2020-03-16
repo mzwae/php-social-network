@@ -11,18 +11,21 @@ class ProfileController extends Controller
     public function getProfile($username)
     {
         $user = User::where('username', $username)->first();
+        $authUserIsFriend = Auth::user()->isFriendsWith($user);
 
         if (!$user) {
             abort(404);
         }
 
         $statuses = $user->statuses()->notReply()->get();
-        // dd($statuses);
-
+        // dd($authUserIsFriend);
+        // dd(Auth::user());
+        // dd($user);
+        
         return view('profile.index')
             ->with('user', $user)
             ->with('statuses', $statuses)
-            ->with('authUserIsFriend', Auth::user()->isFriendsWith($user));
+            ->with('authUserIsFriend', $authUserIsFriend);
     }
 
     public function getEdit()
