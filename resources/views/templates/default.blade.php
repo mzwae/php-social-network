@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>SocialWeb :)</title>
+    <title>SocialWeb 😊</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -42,8 +42,10 @@
 <body>
 
     @include('templates.partials.navigation')
-    <div id="status"></div>
-    <div id="log"></div>
+    <div>
+        <div id="status"></div>
+        <div id="log"></div>
+    </div>
     <div class="container">
         @include('templates.partials.alerts')
         @yield('content')
@@ -59,7 +61,9 @@
             var alert = navigator.onLine ? "Back Online" : "Offline";
 
             if (navigator.onLine) {
-                $("#status").fadeOut(5000);// Wait for five seconds
+                $("#status").fadeOut(7000);// Wait for five seconds
+            } else {
+                $("#status").fadeIn(3000);
             }
 
             status.className = condition;
