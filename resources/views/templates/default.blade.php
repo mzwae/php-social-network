@@ -61,9 +61,12 @@
             var alert = navigator.onLine ? "Back Online" : "Offline";
 
             if (navigator.onLine) {
-                $("#status").fadeOut(7000);// Wait for five seconds
+
+                // Wait for 8 seconds
+                $("#status").animate({opacity: 0}, 8000)
             } else {
-                $("#status").fadeIn(3000);
+                // Wait for 4 seconds
+                $("#status").animate({opacity: 100}, 4000)
             }
 
             status.className = condition;
