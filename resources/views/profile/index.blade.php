@@ -60,7 +60,12 @@
                             @endif
                           
                             <li class="list-inline-item">
-                              10 likes
+                              {{$status->likes->count()}} 
+                              @if($status->likes->count() == 1)
+                                  <span>Like</span>
+                              @else
+                                  <span>Likes</span>
+                              @endif
                             </li>
                         </ul>
     
@@ -93,7 +98,12 @@
                                 @endif
                               
                                 <li class="list-inline-item">
-                                  4 likes
+                                  {{$reply->likes->count()}} 
+                                  @if($reply->likes->count() == 1)
+                                      <span>Like</span>
+                                  @else
+                                      <span>Likes</span>
+                                  @endif
                                 </li>
                             </ul>
                         </div>
