@@ -74,9 +74,9 @@ class StatusController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        $status->likes()->create([
-            'user_id' => Auth::user()->id,
-        ]);
+        // $status->likes()->create([
+        //     'user_id' => Auth::user()->id,
+        // ]);
 
         // $like = $status->likes();
         // dd($like);
