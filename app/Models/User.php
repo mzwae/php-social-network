@@ -119,7 +119,7 @@ class User extends Authenticatable
     public function hasLikedStatus(Status $status)
     {
         return (bool) $status
-            ->likes
+            ->likes()
             ->where('likeable_id', $status->id)
             ->where('likeable_type', get_class($status))
             ->where('user_id', $this->id)

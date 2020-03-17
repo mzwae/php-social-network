@@ -70,9 +70,17 @@ class StatusController extends Controller
             return redirect()->back();
         }
 
-        $like = $status->likes()->create([]);
-        Auth::user()->likes()->save($like);
+        // $like = $status->likes()->create([
+        //     'user_id' => Auth::user()->id,
+        // ]);
+        
+        $status->likes()->create([
+            'user_id' => Auth::user()->id,
+        ]);
 
+        // $like = $status->likes();
+        // dd($like);
+        // Auth::user()->likes()->save($like);
         return redirect()->back();
 
     }
