@@ -67,21 +67,21 @@ class StatusController extends Controller
 
         // if the user has already liked the status or reply
         if (Auth::user()->hasLikedStatus($status)) {
-            return redirect()->back();
+            return redirect()->back()->with('info', 'You have already liked this before');
         }
 
-        // $like = $status->likes()->create([
-        //     'user_id' => Auth::user()->id,
-        // ]);
-        
+        $like = $status->likes()->create([
+            'user_id' => Auth::user()->id,
+        ]);
+
         $status->likes()->create([
             'user_id' => Auth::user()->id,
         ]);
 
         // $like = $status->likes();
         // dd($like);
-        // Auth::user()->likes()->save($like);
-        return redirect()->back();
+        Auth::user()->likes()->save($like);
+        return redirect()->back()->with('info', 'You have successfully liked the status :)');
 
     }
 }
