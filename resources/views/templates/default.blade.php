@@ -56,6 +56,13 @@
         var status = document.getElementById("status");
         var log = document.getElementById("log");
 
+        (function(){
+            if ($('div').hasClass('alert-info')) {
+                $(".alert-info").animate({opacity: 0}, 10000);
+            }
+            
+        })();
+
         function updateOnlineStatus(event) {
             var condition = navigator.onLine ? "alert alert-success" : "alert alert-danger";
             var alert = navigator.onLine ? "Back Online" : "Offline";
@@ -63,7 +70,7 @@
             if (navigator.onLine) {
 
                 // Wait for 8 seconds
-                $("#status").animate({opacity: 0}, 8000)
+                $("#status").animate({opacity: 0}, 10000)
             } else {
                 // Wait for 4 seconds
                 $("#status").animate({opacity: 100}, 4000)
