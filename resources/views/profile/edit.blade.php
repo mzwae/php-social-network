@@ -46,7 +46,7 @@
             @endif
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">
+            <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">
               Update
             </button>
           </div>
