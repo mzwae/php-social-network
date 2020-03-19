@@ -10,12 +10,16 @@
           @if (Auth::user()->hasFriendRequestPending($user))
             <p>Waiting for {{$user->getNameOrUsername()}} to accept your request.</p>
           @elseif (Auth::user()->hasFriendRequestReceived($user))
-            <a href="{{route('friends.accept', ['username' => $user->username])}}" class="btn btn-outline-success my-2 my-sm-0">Accept Friend Request</a>
+            <a href="{{route('friends.accept', ['username' => $user->username])}}" class="btn btn-outline-primary my-2 my-sm-0">Accept Friend Request</a>
 
           @elseif (Auth::user()->isFriendsWith($user))
             <p class="text-success">You and {{$user->getNameOrUsername()}} are friends.</p>
+            <form action="" method="post">
+              <input type="submit" value="Delete friend" class="btn btn-outline-primary my-4">
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
+            </form>
           @elseif (Auth::user()->id !== $user->id)
-            <a href="{{route('friends.add', ['username' => $user->username])}}" class="btn btn-outline-success my-2 my-sm-0">Add as friend</a>
+            <a href="{{route('friends.add', ['username' => $user->username])}}" class="btn btn-outline-primary my-2 my-sm-0">Add as friend</a>
           @endif
 
           <h4>{{$user->getNameOrUsername()}}'s friends list:</h4>
