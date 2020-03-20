@@ -18,58 +18,75 @@ class FriendController extends Controller
 
     public function getAdd($username)
     {
-      $user = User::where('username', $username)->first();
+        $user = User::where('username', $username)->first();
 
-      if (Auth::user()->id === $user->id) {
-        return redirect()->route('home')->with('info', 'Not smart to add yourself to your friends list.');
-      }
+        if (Auth::user()->id === $user->id) {
+            return redirect()->route('home')->with('info', 'Not smart to add yourself to your friends list.');
+        }
 
-      if (!$user) {
+        if (!$user) {
+            return redirect()
+                ->route('home')
+                ->with('info', 'That use could not be found');
+        }
+
+        if (Auth::user()->hasFriendRequestPending($user) || $user->hasFriendRequestPending(Auth::user())) {
+            return redirect()
+                ->route('profile.index', ['username' => $user->username])
+                ->with('info', 'Friend request already pending.');
+        }
+
+        if (Auth::user()->isFriendsWith($user)) {
+            return redirect()
+                ->route('profile.index', ['username' => $user->username])
+                ->with('info', 'Dude, you are already friends with this guy. Why are you trying to add him again?');
+        }
+
+        Auth::user()->addFriend($user);
         return redirect()
-        ->route('home')
-        ->with('info', 'That use could not be found');
-      }
+            ->route('profile.index', ['username' => $username])
+            ->with('info', 'Your friend request has been sent.');
+    }
+/**
+ * Accept a friend a request
+ */
+    public function getAccept($username)
+    {
+        $user = User::where('username', $username)->first();
 
-      if (Auth::user()->hasFriendRequestPending($user) || $user->hasFriendRequestPending(Auth::user())) {
+        if (!$user) {
+            return redirect()
+                ->route('home')
+                ->with('info', 'That user could not be found');
+        }
+
+        if (!Auth::user()->hasFriendRequestReceived($user)) {
+            return redirect()
+                ->route('home')
+                ->with('info', 'Are you trying to be dodgy?');
+        }
+
+        Auth::user()->acceptFriendRequest($user);
+
         return redirect()
-        ->route('profile.index', ['username' => $user->username])
-        ->with('info', 'Friend request already pending.');
-      }
-
-      if (Auth::user()->isFriendsWith($user)) {
-        return redirect()
-        ->route('profile.index', ['username' => $user->username])
-        ->with('info', 'Dude, you are already friends with this guy. Why are you trying to add him again?');
-      }
-
-      Auth::user()->addFriend($user);
-      return redirect()
-      ->route('profile.index', ['username' => $username])
-      ->with('info', 'Your friend request has been sent.');
+            ->route('profile.index', ['username' => $username])
+            ->with('info', 'Friend request has been successfully accepted, congrats you have a new friend now yay.');
     }
 
-    public function getAccept($username){
-      $user = User::where('username', $username)->first();
+/**
+ * Delete a friend
+ */
+    public function postDelete($username)
+    {
+        $user = User::where('username', $username)->first();
 
+        if (!Auth::user()->isFriendsWith($user)) {
+            return redirect()->back();
+        }
 
+        Auth::user()->deleteFriend($user);
 
-      if (!$user) {
-        return redirect()
-        ->route('home')
-        ->with('info', 'That user could not be found');
-      }
-
-      if (!Auth::user()->hasFriendRequestReceived($user)) {
-        return redirect()
-        ->route('home')
-        ->with('info', 'Are you trying to be dodgy?');
-      }
-
-      Auth::user()->acceptFriendRequest($user);
-
-      return redirect()
-      ->route('profile.index', ['username' => $username])
-      ->with('info', 'Friend request has been successfully accepted, congrats you have a new friend now yay.');
+        return redirect()->back()->with('info', 'Friend deleted successfully.');
     }
 
 }
