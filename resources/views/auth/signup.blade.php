@@ -39,7 +39,7 @@
       </div>
 
       <div class="form-group">
-        <button class="btn btn-success" type="submit" name="_token" value="{{ Session::token()}}">Submit</button>
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="_token" value="{{ Session::token()}}">Submit</button>
       </div>
     </form>
   </div>

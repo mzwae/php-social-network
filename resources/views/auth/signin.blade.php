@@ -28,7 +28,7 @@
                 </label>
             </div>
             <div class="form-gorup">
-                <button type="submit" class="btn btn-outline-success">Sign in</button>
+                <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">Sign in</button>
             </div>
             <input type="hidden" name="_token" value="{{Session::token()}}">
         </form>
