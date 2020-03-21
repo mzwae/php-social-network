@@ -31,7 +31,7 @@ class AuthController extends Controller
 
     return redirect()
     ->route('home')
-    ->with('info', 'Your account has been created and you can now sign in.');
+    ->with('info', 'Your account has been created successfully. Please sign in to be able to use SocialWeb.');
   }
 
   public function getSignin()
