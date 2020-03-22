@@ -84,4 +84,23 @@ class StatusController extends Controller
         return redirect()->back()->with('info', 'You have successfully liked the status :)');
 
     }
+
+    public function deleteStatus($statusId){
+        $status = Status::find($statusId);
+
+        if (!$status) {
+            return redirect()->route('home')->with('info', 'Status could not be found.');
+        }
+
+        if (Auth::user()->id !== $status->user_id) {
+            return redirect()->route('home')->with('info', 'You can only delete your own statuses.');
+        }
+
+        dd($statusId);
+
+        Status::destroy($statusId);
+        
+
+
+    }
 }
