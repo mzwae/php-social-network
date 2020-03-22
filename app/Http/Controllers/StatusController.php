@@ -96,10 +96,10 @@ class StatusController extends Controller
             return redirect()->route('home')->with('info', 'You can only delete your own statuses.');
         }
 
-        dd($statusId);
+        // dd($statusId);
 
         Status::destroy($statusId);
-        
+        return redirect()->route('home')->with('info', 'Status deleted successfully.');
 
 
     }
