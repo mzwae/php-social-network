@@ -113,8 +113,8 @@ Route::get('/status/{statusId}/like', [
   'middleware' => ['auth'],
 ]);
 
-Route::post('/status/{statusId}/delete', [
-  'uses' => '\App\Http\Controllers\FriendController@deleteStatus',
+Route::get('/status/{statusId}/delete', [
+  'uses' => '\App\Http\Controllers\StatusController@deleteStatus',
   'as' => 'status.delete',
   'middleware' => ['auth'],
 ]);

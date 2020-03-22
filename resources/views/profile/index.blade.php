@@ -62,6 +62,14 @@
                               </a>
                             </li>
                             @endif
+
+                            @if ($status->user_id === Auth::user()->id)
+                            <li class="list-inline-item">
+                              <a href="{{route('status.delete', ['statusId'=>$status->id])}}">
+                                <i class="fas fa-trash-alt"></i>
+                              </a>
+                            </li>
+                            @endif
                           
                             <li class="list-inline-item">
                               {{$status->likes->count()}} 
