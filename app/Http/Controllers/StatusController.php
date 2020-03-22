@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Status;
+use App\Models\Like;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -85,7 +86,8 @@ class StatusController extends Controller
 
     }
 
-    public function deleteStatus($statusId){
+    public function deleteStatus($statusId)
+    {
         $status = Status::find($statusId);
 
         if (!$status) {
@@ -96,11 +98,18 @@ class StatusController extends Controller
             return redirect()->route('home')->with('info', 'You can only delete your own statuses.');
         }
 
-        // dd($statusId);
+        // dd($status->replies->parent_id);
+        if ($status->replies) {
+            // Status::destroy($status->replies);
+            Status::where('parent_id', $statusId)->delete();
+        }
+        if ($status->likes) {
+            // Status::destroy($status->likes);
+            Like::where('likeable_id', $statusId)->delete();
+        }
 
         Status::destroy($statusId);
         return redirect()->route('home')->with('info', 'Status deleted successfully.');
-
 
     }
 }
