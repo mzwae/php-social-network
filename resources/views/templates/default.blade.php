@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="{{route('home')}}\css\bootstrap.min7.css">
    <style media="screen">
+    
         #status {
             /* position: fixed; */
             width: 100%;
@@ -51,6 +52,7 @@
         @include('templates.partials.alerts')
         @yield('content')
     </div>
+        @include('templates.partials.footer')
 </body>
 <script type="text/javascript">
     window.addEventListener('load', function() {
