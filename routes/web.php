@@ -20,6 +20,10 @@ Route::get('/', [
   'uses' => '\App\Http\Controllers\HomeController@index',
   'as' => 'home',
 ]);
+Route::get('/about', [
+  'uses' => '\App\Http\Controllers\HomeController@displayAboutPage',
+  'as' => 'about',
+]);
 
 // Route::get('/alert', function(){
 //   return redirect()->route('home')->with('info', 'You have signed up!');
