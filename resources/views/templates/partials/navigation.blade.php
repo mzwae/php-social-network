@@ -8,7 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             @if (Auth::check())
-            <li class="nav-item active">
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('about')}}">About</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{route('home')}}">Timeline</a>
             </li>
             <li class="nav-item">
