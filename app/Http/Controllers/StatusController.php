@@ -71,17 +71,12 @@ class StatusController extends Controller
             return redirect()->back()->with('info', 'You have already liked this before');
         }
 
-        $like = $status->likes()->create([
+
+        // No need to save the instance as this's handled as a part of the model's create() method
+       $status->likes()->create([
             'user_id' => Auth::user()->id,
         ]);
 
-        // $status->likes()->create([
-        //     'user_id' => Auth::user()->id,
-        // ]);
-
-        // $like = $status->likes();
-        // dd($like);
-        Auth::user()->likes()->save($like);
         return redirect()->back()->with('info', 'You have successfully liked the status :)');
 
     }
