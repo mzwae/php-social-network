@@ -38,7 +38,7 @@
             <label for="location" class="control-label">
               Location
             </label>
-            <input value="{{Request::old('location') ?: Auth::user()->location}}" type="text"  class="form-control {{$errors->has('location') ? ' is-invalid' : ''}}" id="location" name="location">
+            <input value="{{Request::old('location') ?: Auth::user()->location}}" type="text"  class="form-control {{$errors->has('location') ? ' is-invalid' : ''}}" id="location" name="location" placeholder="City, Country">
             @if ($errors->has('location'))
             <span class="help-block text-danger">
                 {{ $errors->first('location') }}
