@@ -39,11 +39,13 @@ class ProfileController extends Controller
             'first_name' => 'alpha|max:50',
             'last_name' => 'alpha|max:50',
             'location' => 'max:20',
-        ]);
+            'email' => 'required|max:30',
+            ]);
         Auth::user()->update([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'location' => $request->input('location'),
+            'email' => $request->input('email'),
         ]);
 
         return redirect()
