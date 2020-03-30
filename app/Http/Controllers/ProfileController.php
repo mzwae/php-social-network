@@ -39,7 +39,7 @@ class ProfileController extends Controller
             'first_name' => 'alpha|max:50',
             'last_name' => 'alpha|max:50',
             'location' => 'max:20',
-            'email' => 'required|max:30',
+            'email' => 'required|unique:users|email|max:225',
             ]);
         Auth::user()->update([
             'first_name' => $request->input('first_name'),
