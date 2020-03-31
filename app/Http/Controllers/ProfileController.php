@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -39,9 +40,16 @@ class ProfileController extends Controller
             'first_name' => 'alpha|max:50',
             'last_name' => 'alpha|max:50',
             'location' => 'max:20',
-            'email' => 'required|unique:users|email|max:225',
-            'username' => 'required|unique:users|alpha_dash|max:20',
+            'email' => [
+                'required','email','max:225',
+                Rule::unique('users')->ignore( Auth::user()->id),
+            ],
+            'username' =>[
+                'required','alpha_dash','max:20',
+                Rule::unique('users')->ignore(Auth::user()->id)
+            ] //'required|unique:users|alpha_dash|max:20',
             ]);
+
         Auth::user()->update([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
@@ -49,6 +57,7 @@ class ProfileController extends Controller
             'email' => $request->input('email'),
             'username' => $request->input('username'),
         ]);
+
 
         return redirect()
             ->route('profile.edit')
