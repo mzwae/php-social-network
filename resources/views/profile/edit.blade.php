@@ -57,6 +57,17 @@
             @endif
           </div>
           <div class="form-group">
+            <label for="username" class="control-label">
+              Username
+            </label>
+            <input value="{{Request::old('username') ?: Auth::user()->username}}" type="text"  class="form-control {{$errors->has('username') ? ' is-invalid' : ''}}" id="username" name="username" placeholder="Username">
+            @if ($errors->has('username'))
+            <span class="help-block text-danger">
+                {{ $errors->first('username') }}
+            </span>
+            @endif
+          </div>
+          <div class="form-group">
             <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">
               Update
             </button>
