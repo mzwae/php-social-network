@@ -18,9 +18,9 @@
                 <a class="nav-link" href="{{route('friends.index')}}">Friends</a>
             </li>
 
-            <form class="form-inline my-2 my-lg-0 ml-4" action="{{route('search.results')}}">
+            <form class="form-inline" action="{{route('search.results')}}">
                 <input name="query" class="form-control mr-sm-2" type="search" placeholder="Find People" aria-label="Search">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-primary" type="submit">Search</button>
             </form>
             @endif
         </ul>
