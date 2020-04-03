@@ -57,7 +57,7 @@ class ProfileController extends Controller
             'location' => $request->input('location'),
             'email' => $request->input('email'),
             'username' => $request->input('username'),
-            'password' => $request->input('password'),
+            'password' => bcrypt($request->input('password')),
         ]);
 
 
