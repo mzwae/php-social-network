@@ -71,12 +71,7 @@
             <label for="password" class="control-label">
               Password
             </label>
-            <input value="{{Request::old('password') ?: Auth::user()->password}}" type="password"  class="form-control {{$errors->has('password') ? ' is-invalid' : ''}}" id="password" name="password" placeholder="Password">
-            @if ($errors->has('password'))
-            <span class="help-block text-danger">
-                {{ $errors->first('password') }}
-            </span>
-            @endif
+            <p><a href="#">Update Password</a></p>
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">
