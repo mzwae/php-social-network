@@ -67,4 +67,8 @@ class ProfileController extends Controller
 
     }
 
+    public function getUpdatePassword(){
+        return view('profile.password');
+    }
+
 }
