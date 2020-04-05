@@ -1,14 +1,10 @@
 @extends('templates.default')
 
 @section('content')
-  <h3>Update your password</h3>
+  <h3 class="text-center">Update your password</h3>
 
-  <div class="row">
-      <div class="col-lg-6">
-        <form class="form-vertical" role="form" method="post" action="{{route('profile.password')}}">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="form-group">
+        <form class="form-vertical text-center" role="form" method="post" action="{{route('profile.password')}}">
+              <div class="form-group w-50 offset-md-3">
                 <label for="password" class="control-label">
                   Your new password
                 </label>
@@ -18,10 +14,8 @@
                     {{ $errors->first('password') }}
                 </span>
                 @endif
-              </div>
             </div>
-            <div class="col-lg-6">
-              <div class="form-group">
+              <div class="form-group w-50 offset-md-3">
                 <label for="confirm" class="control-label">
                   Confirm your new password
                 </label>
@@ -32,8 +26,7 @@
                 </span>
                 @endif
               </div>
-            </div>
-          </div>
+              
           
           <div class="form-group">
             <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">
@@ -42,6 +35,4 @@
           </div>
           <input type="hidden" name="_token" value="{{Session::token()}}">
         </form>
-      </div>
-  </div>
 @stop
