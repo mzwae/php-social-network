@@ -71,7 +71,7 @@
             <label for="password" class="control-label">
               Password
             </label>
-              <p><a href="#">Update your password</a></p>
+              <p><a href="{{route('profile.password')}}">Update your password</a></p>
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">
