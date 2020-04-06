@@ -19,10 +19,10 @@
                 <label for="confirm" class="control-label">
                   Confirm your new password
                 </label>
-                <input value="" type="password" name="confirm" class="form-control {{$errors->has('confirm') ? ' is-invalid' : ''}}" id="confirm">
-                @if ($errors->has('confirm'))
+                <input value="" type="password" name="password_confirmation" class="form-control {{$errors->has('password_confirmation') ? ' is-invalid' : ''}}" id="password_confirmation">
+                @if ($errors->has('password_confirmation'))
                 <span class="help-block text-danger">
-                    {{ $errors->first('confirm') }}
+                    {{ $errors->first('password_confirmation') }}
                 </span>
                 @endif
               </div>
