@@ -71,4 +71,23 @@ class ProfileController extends Controller
         return view('profile.password');
     }
 
+    public function postUpdatePassword(Request $request)
+    {
+        $this->validate($request, [
+        
+            'password' => 'required|confirmed|min:6',
+            ]);
+
+        Auth::user()->update([
+
+            'password' => bcrypt($request->input('password')),
+        ]);
+
+
+        return redirect()
+            ->route('home')
+            ->with('info', 'Your password has been successfully updated.');
+
+    }
+
 }
