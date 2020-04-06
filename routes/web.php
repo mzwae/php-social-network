@@ -83,6 +83,12 @@ Route::get('/profile/password', [
   'middleware' => ['auth'],
 ]);
 
+Route::post('/profile/password', [
+  'uses' => '\App\Http\Controllers\ProfileController@postUpdatePassword',
+  'as' => 'profile.passwordChange',
+  'middleware' => ['auth'],
+]);
+
 /*Friends*/
 Route::get('/friends', [
   'uses' => '\App\Http\Controllers\FriendController@getIndex',
