@@ -3,13 +3,13 @@
 @section('content')
   <h3 class="text-center">Update your password</h3>
 
-        <form class="form-vertical text-center" role="form" method="post" action="{{route('profile.password')}}">
+        <form class="form-vertical text-center" role="form" method="post" action="{{route('profile.passwordChange')}}">
               <div class="form-group w-50 offset-md-3">
                 <label for="password" class="control-label">
                   Your new password
                 </label>
                 <input value="" type="password"  class="form-control {{$errors->has('password') ? ' is-invalid' : ''}}" id="password" name="password">
-                @if ($errors->has('first_name'))
+                @if ($errors->has('password'))
                 <span class="help-block text-danger">
                     {{ $errors->first('password') }}
                 </span>
