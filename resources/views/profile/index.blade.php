@@ -53,6 +53,14 @@
                             <li class="list-inline-item">
                               {{$status->created_at->diffForHumans()}}
                             </li>
+
+                            @if ($status->user_id === Auth::user()->id)
+                            <li class="list-inline-item">
+                              <a href="{{route('status.edit', ['statusId'=>$status->id])}}"  data-toggle="tooltip" title="Edit Status">
+                                <i class="fas fa-edit text-info"></i>
+                              </a>
+                            </li>
+                            @endif
     
                             {{-- A user should not be able to like his own statuses --}}
                             @if ($status->user->isFriendsWith(Auth::user()))
