@@ -107,4 +107,8 @@ class StatusController extends Controller
         return redirect()->route('home')->with('info', 'Status deleted successfully.');
 
     }
+
+    public function editStatus(){
+        dd("all ok");
+    }
 }
