@@ -135,6 +135,12 @@ Route::get('/status/{statusId}/delete', [
   'middleware' => ['auth'],
 ]);
 
+Route::post('/status/{statusId}/edit', [
+  'uses' => '\App\Http\Controllers\StatusController@editStatus',
+  'as' => 'status.edit',
+  'middleware' => ['auth'],
+]);
+
 
 
 
