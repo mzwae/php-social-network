@@ -56,7 +56,7 @@
 
                             @if ($status->user_id === Auth::user()->id)
                             <li class="list-inline-item">
-                              <a href="{{route('status.edit', ['statusId'=>$status->id])}}"  data-toggle="tooltip" title="Edit Status">
+                              <a title="Edit Status" type="button" data-toggle="modal" data-target="#editModal">
                                 <i class="fas fa-edit text-info"></i>
                               </a>
                             </li>
@@ -152,4 +152,34 @@
             @endif
         </div>
     </div>
+
+<!-- The Modal -->
+<div class="modal" id="editModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Your Status</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+      <form action="{{route('status.edit', ['statusId'=>$status->id])}}" method="post">
+          <div class="form-group">
+            <label for="status-body">Edit Status</label>
+            <textarea class="form-control" name="status-body" id="status-body" cols="30" rows="10">{{$status->body}}</textarea>
+          </div>
+
+          <input type="submit" value="Save" class="btn btn-outline-primary">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          <input type="hidden" name="_token" value="{{Session::token()}}">
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
     @endsection
