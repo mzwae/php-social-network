@@ -108,7 +108,16 @@ class StatusController extends Controller
 
     }
 
-    public function editStatus(){
-        dd("all ok");
+    public function editStatus(Request $request, $statusId){
+        $this->validate($request, [
+            'status-body' => 'required|max:1000',
+        ]);
+
+        $status = Status::find($statusId);
+
+        $status->body = $request['status-body'];
+
+
+        dd($request['status-body']);
     }
 }
