@@ -56,7 +56,7 @@
 
                             @if ($status->user_id === Auth::user()->id)
                             <li class="list-inline-item">
-                              <a title="Edit Status" type="button" data-toggle="modal" data-target="#editModal">
+                              <a title="Edit Status" type="button" data-toggle="modal" data-target="#editModal-{{$status->id}}">
                                 <i class="fas fa-edit text-info"></i>
                               </a>
                             </li>
@@ -128,6 +128,8 @@
                             </ul>
                         </div>
                     </div>
+
+
                   @endforeach
     
     
@@ -147,14 +149,9 @@
                     </div>
                 </div>
                 <hr>
-                @endforeach
-                {{-- {{$statuses->render()}} --}}
-            @endif
-        </div>
-    </div>
 
-<!-- The Modal -->
-<div class="modal" id="editModal">
+                                    <!-- The Modal -->
+<div class="modal" id="editModal-{{$status->id}}">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -178,8 +175,16 @@
         </form>
       </div>
 
+
     </div>
   </div>
 </div>
+                @endforeach
+                {{-- {{$statuses->render()}} --}}
+            @endif
+        </div>
+    </div>
+
+
 
     @endsection
