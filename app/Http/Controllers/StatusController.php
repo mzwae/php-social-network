@@ -117,7 +117,9 @@ class StatusController extends Controller
 
         $status->body = $request['status-body'];
 
+        $status->save();
 
-        dd($request['status-body']);
+
+        return redirect()->back()->with('info', 'You have successfully updated this status');
     }
 }
