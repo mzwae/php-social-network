@@ -111,6 +111,14 @@
                                 <li class="list-inline-item">
                                   {{$reply->created_at->diffForHumans()}}
                                 </li>
+
+                                @if ($reply->user_id === Auth::user()->id)
+                                  <li class="list-inline-item">
+                                    <a title="Edit Status" type="button" data-toggle="modal" data-target="#editModal-{{$reply->id}}">
+                                      <i class="fas fa-edit text-info"></i>
+                                    </a>
+                                  </li>
+                                @endif
     
                                 {{-- A user shuold not be able to like his own reply --}}
                                 @if ($reply->user->isFriendsWith(Auth::user()))
@@ -140,6 +148,35 @@
                             </ul>
                         </div>
                     </div>
+                       <!-- The edit reply Modal -->
+                    <div class="modal" id="editModal-{{$reply->id}}">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                            <h4 class="modal-title">Edit Your Reply</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+
+                          <!-- Modal body -->
+                          <div class="modal-body">
+                          <form action="{{route('status.edit', ['statusId'=>$reply->id])}}" method="post">
+                              <div class="form-group">
+                                <label for="status-body">Edit Reply</label>
+                                <textarea class="form-control" name="status-body" id="reply-body" cols="30" rows="10">{{$reply->body}}</textarea>
+                              </div>
+
+                              <input type="submit" value="Save" class="btn btn-outline-primary">
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                              <input type="hidden" name="_token" value="{{Session::token()}}">
+                            </form>
+                          </div>
+
+
+                        </div>
+                      </div>
+                    </div>
 
 
                   @endforeach
@@ -162,7 +199,7 @@
                 </div>
                 <hr>
 
-                                    <!-- The Modal -->
+                                    <!-- The edit status Modal -->
                     <div class="modal" id="editModal-{{$status->id}}">
                       <div class="modal-dialog">
                         <div class="modal-content">
