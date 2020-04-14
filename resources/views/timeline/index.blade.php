@@ -32,7 +32,10 @@
                     <img class="mr-3 rounded-circle" style="width:60px;" alt="{{$status->user->getNameOrUsername()}}" src="{{$status->user->getAvatarURL()}}">
                 </a>
                 <div class="media-body">
-                    <h4 class="media-heading"><a href="{{route('profile.index',['username'=> $status->user->username])}}">{{$status->user->getNameOrUsername()}}</a></h4>
+                    <h4 class="media-heading"><a href="{{route('profile.index',['username'=> $status->user->username])}}">
+                      {{$status->user->getNameOrUsername()}}
+                    </a>
+                  </h4>
                     <p>{{$status->body}}</p>
                     <ul class="list-inline">
                         <li class="list-inline-item">
