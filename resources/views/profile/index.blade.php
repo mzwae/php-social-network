@@ -131,7 +131,7 @@
 
                                 @if ($reply->user_id === Auth::user()->id)
                                 <li class="list-inline-item">
-                                  <a href="{{route('status.delete', ['statusId'=>$reply->id])}}"  data-toggle="tooltip" title="Delete Status">
+                                  <a href="{{route('status.delete', ['statusId'=>$reply->id])}}"  data-toggle="tooltip" title="Delete Reply">
                                     <i class="fas fa-trash-alt text-danger"></i>
                                   </a>
                                 </li>
