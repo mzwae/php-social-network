@@ -42,6 +42,14 @@
                           {{$status->created_at->diffForHumans()}}
                         </li>
 
+                        @if ($status->user_id === Auth::user()->id)
+                            <li class="list-inline-item">
+                              <a title="Edit Status" type="button" data-toggle="modal" data-target="#editModal-{{$status->id}}">
+                                <i class="fas fa-edit text-info"></i>
+                              </a>
+                            </li>
+                        @endif
+
                         {{-- A user should not be able to like his own statuses --}}
                         @if ($status->user_id !== Auth::user()->id)
                         <li class="list-inline-item">
@@ -87,6 +95,8 @@
                             <li class="list-inline-item">
                               {{$reply->created_at->diffForHumans()}}
                             </li>
+
+
 
                             @if ($reply->user_id === Auth::user()->id)
                             <li class="list-inline-item">
