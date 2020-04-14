@@ -88,6 +88,14 @@
                               {{$reply->created_at->diffForHumans()}}
                             </li>
 
+                            @if ($reply->user_id === Auth::user()->id)
+                            <li class="list-inline-item">
+                              <a href="{{route('status.delete', ['statusId'=>$reply->id])}}"  data-toggle="tooltip" title="Delete Reply">
+                                <i class="fas fa-trash-alt text-danger"></i>
+                              </a>
+                            </li>
+                            @endif
+
                             {{-- A user shuold not be able to like his own reply --}}
                             @if ($reply->user->isFriendsWith(Auth::user()))
                             <li class="list-inline-item">
