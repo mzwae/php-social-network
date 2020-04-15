@@ -96,6 +96,14 @@
                               {{$reply->created_at->diffForHumans()}}
                             </li>
 
+                            @if ($reply->user_id === Auth::user()->id)
+                                  <li class="list-inline-item">
+                                    <a title="Edit Status" type="button" data-toggle="modal" data-target="#editModal-{{$reply->id}}">
+                                      <i class="fas fa-edit text-info"></i>
+                                    </a>
+                                  </li>
+                                @endif
+
 
 
                             @if ($reply->user_id === Auth::user()->id)
