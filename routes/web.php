@@ -17,11 +17,11 @@ Route::get('/', function () {
 */
 
 Route::get('/', [
-  'uses' => '\App\Http\Controllers\HomeController@index',
+  'uses' => 'HomeController@index',
   'as' => 'home',
 ]);
 Route::get('/about', [
-  'uses' => '\App\Http\Controllers\HomeController@displayAboutPage',
+  'uses' => 'HomeController@displayAboutPage',
   'as' => 'about',
 ]);
 
@@ -30,113 +30,113 @@ Route::get('/about', [
 // });
 
 Route::get('/signup', [
-  'uses' => '\App\Http\Controllers\AuthController@getSignup',
+  'uses' => 'AuthController@getSignup',
   'as' => 'auth.signup',
   'middleware' => ['guest'],
 ]);
 
 Route::post('/signup', [
-  'uses' => '\App\Http\Controllers\AuthController@postSignup',
+  'uses' => 'AuthController@postSignup',
   'middleware' => ['guest'],
 ]);
 
 Route::get('/signin', [
-  'uses' => '\App\Http\Controllers\AuthController@getSignin',
+  'uses' => 'AuthController@getSignin',
   'as' => 'auth.signin',
   'middleware' => ['guest'],
 ]);
 
 Route::post('/signin', [
-  'uses' => '\App\Http\Controllers\AuthController@postSignin',
+  'uses' => 'AuthController@postSignin',
   'middleware' => ['guest'],
 ]);
 
 Route::get('/signout', [
-  'uses' => '\App\Http\Controllers\AuthController@getSignout',
+  'uses' => 'AuthController@getSignout',
   'as' => 'auth.signout',
 ]);
 
 /*Search*/
 Route::get('/search', [
-  'uses' => '\App\Http\Controllers\SearchController@getResults',
+  'uses' => 'SearchController@getResults',
   'as' => 'search.results',
 ]);
 
 /*User Profile*/
 Route::get('/user/{username}', [
-  'uses' => '\App\Http\Controllers\ProfileController@getProfile',
+  'uses' => 'ProfileController@getProfile',
   'as' => 'profile.index',
 ]);
 Route::get('/profile/edit', [
-  'uses' => '\App\Http\Controllers\ProfileController@getEdit',
+  'uses' => 'ProfileController@getEdit',
   'as' => 'profile.edit',
   'middleware' => ['auth'],
 ]);
 Route::post('/profile/edit', [
-  'uses' => '\App\Http\Controllers\ProfileController@postEdit',
+  'uses' => 'ProfileController@postEdit',
   'middleware' => ['auth'],
 ]);
 
 Route::get('/profile/password', [
-  'uses' => '\App\Http\Controllers\ProfileController@getUpdatePassword',
+  'uses' => 'ProfileController@getUpdatePassword',
   'as' => 'profile.password',
   'middleware' => ['auth'],
 ]);
 
 Route::post('/profile/password', [
-  'uses' => '\App\Http\Controllers\ProfileController@postUpdatePassword',
+  'uses' => 'ProfileController@postUpdatePassword',
   'as' => 'profile.passwordChange',
   'middleware' => ['auth'],
 ]);
 
 /*Friends*/
 Route::get('/friends', [
-  'uses' => '\App\Http\Controllers\FriendController@getIndex',
+  'uses' => 'FriendController@getIndex',
   'as' => 'friends.index',
   'middleware' => ['auth'],
 ]);
 Route::get('/friends/add/{username}', [
-  'uses' => '\App\Http\Controllers\FriendController@getAdd',
+  'uses' => 'FriendController@getAdd',
   'as' => 'friends.add',
   'middleware' => ['auth'],
 ]);
 Route::get('/friends/accept/{username}', [
-  'uses' => '\App\Http\Controllers\FriendController@getAccept',
+  'uses' => 'FriendController@getAccept',
   'as' => 'friends.accept',
   'middleware' => ['auth'],
 ]);
 
 Route::post('/friends/delete/{username}', [
-  'uses' => '\App\Http\Controllers\FriendController@postDelete',
+  'uses' => 'FriendController@postDelete',
   'as' => 'friends.delete',
   'middleware' => ['auth'],
 ]);
 
 /*Statuses*/
 Route::post('/status', [
-  'uses' => '\App\Http\Controllers\StatusController@postStatus',
+  'uses' => 'StatusController@postStatus',
   'as' => 'status.post',
   'middleware' => ['auth'],
 ]);
 Route::post('/status/{statusId}/reply', [
-  'uses' => '\App\Http\Controllers\StatusController@postReply',
+  'uses' => 'StatusController@postReply',
   'as' => 'status.reply',
   'middleware' => ['auth'],
 ]);
 Route::get('/status/{statusId}/like', [
-  'uses' => '\App\Http\Controllers\StatusController@getLike',
+  'uses' => 'StatusController@getLike',
   'as' => 'status.like',
   'middleware' => ['auth'],
 ]);
 
 Route::get('/status/{statusId}/delete', [
-  'uses' => '\App\Http\Controllers\StatusController@deleteStatus',
+  'uses' => 'StatusController@deleteStatus',
   'as' => 'status.delete',
   'middleware' => ['auth'],
 ]);
 
 Route::post('/status/{statusId}/edit', [
-  'uses' => '\App\Http\Controllers\StatusController@editStatus',
+  'uses' => 'StatusController@editStatus',
   'as' => 'status.edit',
   'middleware' => ['auth'],
 ]);
@@ -147,6 +147,6 @@ Route::post('/status/{statusId}/edit', [
 
 // Test
 Route::get('/test', [
-  'uses' => '\App\Http\Controllers\test@displayTest',
+  'uses' => 'test@displayTest',
   'as' => 'app.test',
 ]);
