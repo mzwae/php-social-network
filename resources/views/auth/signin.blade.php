@@ -1,6 +1,7 @@
 @extends('templates.default')
 
 @section('content')
+<h3>Sign in</h3>
 <div class="row">
     <div class="col-lg-6">
         <form class="form-vertical" role="form" method="post" action="{{route('auth.signin')}}">
