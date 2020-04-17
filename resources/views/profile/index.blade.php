@@ -230,14 +230,14 @@
                     </div>
 
                               <!-- Delete Status Button Modal HTML -->
-                    <div id="deleteStatusModal-{{$status->id}}" class="modal fade">
+                    <div id="deleteStatusModal-{{$status->id}}" class="modal fade delete-modal">
                       <div class="modal-dialog modal-confirm">
                         <div class="modal-content">
                           <div class="modal-header">
                             <div class="icon-box">
                               <i class="material-icons">&#xE5CD;</i>
                             </div>
-                            <h4 class="modal-title">Are you sure?</h4>	
+                            <h4 class="modal-title">Are you sure?</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                           </div>
                           <div class="modal-body">
