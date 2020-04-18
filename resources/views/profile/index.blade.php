@@ -241,10 +241,10 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                           </div>
                           <div class="modal-body">
-                            <p>Do you really want to delete these records? This process cannot be undone.</p>
+                            <p>Do you really want to delete this? This process cannot be undone.</p>
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                            <a type="button" class="btn btn-info" data-dismiss="modal">Cancel</a>
                             <a href="{{route('status.delete', ['statusId'=>$status->id])}}" type="button" class="btn btn-danger">Delete</a>
                           </div>
                         </div>
