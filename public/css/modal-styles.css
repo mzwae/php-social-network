@@ -12,6 +12,7 @@
 .modal-confirm .modal-header {
     border-bottom: none;   
     position: relative;
+    display: block;
 }
 .modal-confirm h4 {
     text-align: center;
