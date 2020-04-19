@@ -127,7 +127,7 @@ Route::get('/status/{statusId}/like', [
   'middleware' => ['auth'],
 ]);
 
-Route::get('/status/{statusId}/delete', [
+Route::delete('/status/{statusId}/delete', [
   'uses' => 'StatusController@deleteStatus',
   'as' => 'status.delete',
   'middleware' => ['auth'],
