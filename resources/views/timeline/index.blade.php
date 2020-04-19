@@ -106,13 +106,13 @@
 
 
 
-                            @if ($reply->user_id === Auth::user()->id)
-                            <li class="list-inline-item">
-                              <a href="{{route('status.delete', ['statusId'=>$reply->id])}}"  data-toggle="tooltip" title="Delete Reply">
-                                <i class="fas fa-trash-alt text-danger"></i>
-                              </a>
-                            </li>
-                            @endif
+                                @if ($reply->user_id === Auth::user()->id)
+                                <li class="list-inline-item">
+                                  <a data-toggle="modal"  data-target="#deleteReplyModal-{{$reply->id}}" title="Delete Reply">
+                                    <i class="fas fa-trash-alt text-danger"></i>
+                                  </a>
+                                </li>
+                                @endif
 
                             {{-- A user shuold not be able to like his own reply --}}
                             @if ($reply->user->isFriendsWith(Auth::user()))
@@ -164,6 +164,33 @@
                           </div>
                         </div>
                       </div>
+
+
+                                          <!-- Delete Reply Button Modal HTML -->
+                    <div id="deleteReplyModal-{{$reply->id}}" class="modal fade delete-modal">
+                      <div class="modal-dialog modal-confirm">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <div class="icon-box">
+                              <i class="material-icons">&#xE5CD;</i>
+                            </div>
+                            <h4 class="modal-title">Are you sure?</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Do you really want to delete this? This process cannot be undone.</p>
+                          </div>
+                          <div class="modal-footer">
+                            <form action="{{route('status.delete', ['statusId'=>$reply->id])}}" method="POST">
+                              <input value="Delete" type="submit" class="btn btn-danger">
+                              @method('DELETE')
+                              @CSRF
+                            </form>
+                            <a type="button" class="btn btn-info" data-dismiss="modal">Cancel</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
               @endforeach
 
 
@@ -212,6 +239,7 @@
                 </div>
               </div>
             </div>
+
             @endforeach
             {{$statuses->render()}}
         @endif
