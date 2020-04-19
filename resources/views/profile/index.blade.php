@@ -193,8 +193,12 @@
                             <p>Do you really want to delete this? This process cannot be undone.</p>
                           </div>
                           <div class="modal-footer">
+                            <form action="{{route('status.delete', ['statusId'=>$reply->id])}}" method="POST">
+                              <input value="Delete" type="submit" class="btn btn-danger">
+                              @method('DELETE')
+                              @CSRF
+                            </form>
                             <a type="button" class="btn btn-info" data-dismiss="modal">Cancel</a>
-                            <a href="{{route('status.delete', ['statusId'=>$reply->id])}}" type="button" class="btn btn-danger">Delete</a>
                           </div>
                         </div>
                       </div>
