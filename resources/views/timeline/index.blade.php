@@ -61,7 +61,7 @@
 
                         @if ($status->user_id === Auth::user()->id)
                             <li class="list-inline-item">
-                              <a href="{{route('status.delete', ['statusId'=>$status->id])}}"  data-toggle="tooltip" title="Delete Status">
+                              <a data-toggle="modal" data-target="#deleteStatusModal-{{$status->id}}" title="Delete Status">
                                 <i class="fas fa-trash-alt text-danger"></i>
                               </a>
                             </li>
@@ -239,6 +239,32 @@
                 </div>
               </div>
             </div>
+
+            <!-- Delete Status Button Modal HTML -->
+            <div id="deleteStatusModal-{{$status->id}}" class="modal fade delete-modal">
+            <div class="modal-dialog modal-confirm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                  </div>
+                  <h4 class="modal-title">Are you sure?</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <p>Do you really want to delete this? This process cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                  <form action="{{route('status.delete', ['statusId'=>$status->id])}}" method="POST">
+                    <input value="Delete" type="submit" class="btn btn-danger">
+                    @method('DELETE')
+                    @CSRF
+                  </form>
+                  <a type="button" class="btn btn-info" data-dismiss="modal">Cancel</a>
+                </div>
+              </div>
+            </div>
+          </div>
 
             @endforeach
             {{$statuses->render()}}
