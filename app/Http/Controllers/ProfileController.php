@@ -48,7 +48,6 @@ class ProfileController extends Controller
                 'required','alpha_dash','max:20',
                 Rule::unique('users')->ignore(Auth::user()->id)
             ],
-            'password' => 'required|min:6',
             ]);
 
         Auth::user()->update([
@@ -57,7 +56,6 @@ class ProfileController extends Controller
             'location' => $request->input('location'),
             'email' => $request->input('email'),
             'username' => $request->input('username'),
-            'password' => bcrypt($request->input('password')),
         ]);
 
 
