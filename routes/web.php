@@ -145,6 +145,7 @@ Route::post('/status/{statusId}/edit', [
 
 // Test
 Route::get('/test', [
-  'uses' => 'test@displayTest',
+  'uses' => 'test',
   'as' => 'app.test',
 ]);
+
