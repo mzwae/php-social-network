@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-8">
         <form role="form" action="{{route('status.post')}}" method="post">
             <div class="form-group">
                 <textarea class="form-control {{$errors->has('status') ? ' is-invalid' : ''}}" placeholder="What's up {{$username}}?" name="status" rows="2"></textarea>
@@ -20,7 +20,7 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-5">
+    <div class="col-lg-8">
         <!-- Timeline statuses and replies -->
         @if (!$statuses->count())
             <p>Therei's nothing in your timeline, yet.</p>
@@ -39,8 +39,9 @@
                     <p>{{$status->body}}</p>
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                          {{$status->created_at->diffForHumans()}}
+                          Created: {{$status->created_at->diffForHumans()}}
                         </li>
+                        
 
                         @if ($status->user_id === Auth::user()->id)
                             <li class="list-inline-item">
@@ -75,6 +76,12 @@
                               <span>Likes</span>
                           @endif
                         </li>
+
+                        @if($status->updated_at != $status->created_at)
+                          <li class="list-inline-item">
+                            Updated: {{$status->updated_at->diffForHumans()}}
+                          </li>
+                        @endif
                     </ul>
 
                 {{-- reply --}}
