@@ -15,9 +15,10 @@
           @elseif (Auth::user()->isFriendsWith($user))
             <p class="text-success">You and {{$user->getNameOrUsername()}} are friends.</p>
         <form action="{{route('friends.delete', ['username'=>$user->username])}}" method="post">
-              <input type="submit" value="Delete friend" class="btn btn-outline-primary my-4">
-            <input type="hidden" name="_token" value="{{csrf_token()}}">
-            </form>
+            <input type="submit" value="Delete friend" class="btn btn-outline-primary my-4">
+            @csrf
+            @method('delete')
+        </form>
           @elseif (Auth::user()->id !== $user->id)
             <a href="{{route('friends.add', ['username' => $user->username])}}" class="btn btn-outline-primary my-2 my-sm-0">Add as friend</a>
           @endif
