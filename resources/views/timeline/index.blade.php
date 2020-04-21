@@ -100,7 +100,7 @@
                         <p>{{$reply->body}}</p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                              {{$reply->created_at->diffForHumans()}}
+                              Created: {{$reply->created_at->diffForHumans()}}
                             </li>
 
                             @if ($reply->user_id === Auth::user()->id)
@@ -138,6 +138,12 @@
                                   <span>Likes</span>
                               @endif
                             </li>
+
+                            @if($reply->updated_at != $reply->created_at)
+                            <li class="list-inline-item">
+                              Updated: {{$reply->updated_at->diffForHumans()}}
+                            </li>
+                          @endif
                         </ul>
                     </div>
                 </div>
