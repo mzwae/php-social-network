@@ -36,7 +36,7 @@
       </div>
       <hr>
       <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-8">
             <!-- Timeline statuses and replies -->
             @if (!$statuses->count())
                 <p>There's nothing in your timeline, yet.</p>
@@ -146,6 +146,12 @@
                                       <span>Likes</span>
                                   @endif
                                 </li>
+
+                                @if($reply->updated_at != $reply->created_at)
+                                  <li class="list-inline-item">
+                                  Updated: {{$reply->updated_at->diffForHumans()}}
+                                  </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
