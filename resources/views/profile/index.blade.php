@@ -70,7 +70,7 @@
                             {{-- A user should not be able to like his own statuses --}}
                             @if ($status->user->isFriendsWith(Auth::user()))
                             <li class="list-inline-item">
-                              <a href="{{route('status.like', ['statusId'=>$status->id])}}">
+                              <a href="{{route('status.like', ['statusId'=>$status->id])}}" title="Like status">
                                 <i class="fas fa-thumbs-up"></i>
                               </a>
                             </li>
@@ -130,7 +130,7 @@
                                 {{-- A user shuold not be able to like his own reply --}}
                                 @if ($reply->user->isFriendsWith(Auth::user()))
                                 <li class="list-inline-item">
-                                  <a href="{{route('status.like', ['statusId'=>$reply->id])}}">
+                                  <a href="{{route('status.like', ['statusId'=>$reply->id])}}" title="Like reply">
                                     <i class="fas fa-thumbs-up"></i>
                                   </a>
                                 </li>
