@@ -77,7 +77,7 @@ class StatusController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        return redirect()->back()->with('info', 'Successfully liked 😊');
+        return redirect()->back()->with('info', 'Liked Successfully 😊');
 
     }
 
