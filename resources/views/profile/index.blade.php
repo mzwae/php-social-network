@@ -56,7 +56,7 @@
                         <p>{{$status->body}}</p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                              {{$status->created_at->diffForHumans()}}
+                              Created: {{$status->created_at->diffForHumans()}}
                             </li>
 
                             @if ($status->user_id === Auth::user()->id)
@@ -116,7 +116,7 @@
                             <p>{{$reply->body}}</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                  {{$reply->created_at->diffForHumans()}}
+                                  Created: {{$reply->created_at->diffForHumans()}}
                                 </li>
 
                                 @if ($reply->user_id === Auth::user()->id)
