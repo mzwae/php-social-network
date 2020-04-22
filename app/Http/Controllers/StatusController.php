@@ -30,7 +30,7 @@ class StatusController extends Controller
         $this->validate($request, [
             "reply-{$statusId}" => 'required|max:1000',
         ], [
-            'required' => 'The reply body is required, stop being lazy and write something.',
+            'required' => 'The reply body is required, stop being lazy and write something',
         ]);
         $status = Status::notReply()->find($statusId);
 
@@ -68,7 +68,7 @@ class StatusController extends Controller
 
         // if the user has already liked the status or reply
         if (Auth::user()->hasLikedStatus($status)) {
-            return redirect()->back()->with('info', 'You have already liked this before');
+            return redirect()->back()->with('info', 'You have already liked this before 😊');
         }
 
 
@@ -77,7 +77,7 @@ class StatusController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        return redirect()->back()->with('info', 'You have successfully liked the status :)');
+        return redirect()->back()->with('info', 'Successfully liked 😊');
 
     }
 
@@ -86,11 +86,11 @@ class StatusController extends Controller
         $status = Status::find($statusId);
 
         if (!$status) {
-            return redirect()->route('home')->with('info', 'Status could not be found.');
+            return redirect()->route('home')->with('info', 'Could not be found.');
         }
 
         if (Auth::user()->id !== $status->user_id) {
-            return redirect()->back()->with('info', 'You can only delete your own statuses.');
+            return redirect()->back()->with('info', 'You can only delete your own stuff 😊');
         }
 
         // dd($status->replies->parent_id);
@@ -104,7 +104,7 @@ class StatusController extends Controller
         }
 
         Status::destroy($statusId);
-        return redirect()->back()->with('info', 'Status deleted successfully.');
+        return redirect()->back()->with('info', 'Deleted successfully 😊');
 
     }
 
@@ -120,6 +120,6 @@ class StatusController extends Controller
         $status->save();
 
 
-        return redirect()->back()->with('info', 'You have successfully updated this status');
+        return redirect()->back()->with('info', 'Updated Successfully 😊');
     }
 }
