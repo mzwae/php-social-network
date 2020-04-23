@@ -92,12 +92,23 @@
                                   <span>Likes</span>
                               @endif
                             </li>
-
+                            
+                            
+                            <li class="list-inline-item">
+                               {{$status->replies()->count()}} 
+                               @if($status->replies()->count() == 1)
+                                <span>Reply</span>
+                               @else
+                                <span>Replies</span>
+                               @endif
+                            </li>
+                            
                             @if($status->updated_at != $status->created_at)
                               <li class="list-inline-item">
                                 Updated: {{$status->updated_at->diffForHumans()}}
                               </li>
                             @endif
+
                         </ul>
     
                     {{-- reply --}}
