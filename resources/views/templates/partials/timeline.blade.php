@@ -89,7 +89,7 @@
                         </h5>
                         <p>{{$reply->body}}</p>
                         <ul class="list-inline">
-                            <li class="list-inline-item">
+                            <li class="list-inline-item" data-toggle="tooltip" title="{{$reply->created_at}}">
                               Created: {{$reply->created_at->diffForHumans()}}
                             </li>
 
