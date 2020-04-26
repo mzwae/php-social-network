@@ -58,6 +58,11 @@
         @include('templates.partials.footer')
 </body>
 <script type="text/javascript">
+
+// tooltip activation
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
     window.addEventListener('load', function() {
         var status = document.getElementById("status");
         var log = document.getElementById("log");
