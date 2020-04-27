@@ -1,5 +1,5 @@
                 <!-- Delete Reply Button Modal HTML -->
-                <div id="deleteReplyModal-{{$id}}" class="modal fade delete-modal">
+                <div id="deleteModal-{{$id}}" class="modal fade delete-modal">
                     <div class="modal-dialog modal-confirm">
                       <div class="modal-content">
                         <div class="modal-header">
