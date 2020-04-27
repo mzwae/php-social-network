@@ -41,7 +41,7 @@
 
                         @if ($status->user_id === Auth::user()->id)
                         <li class="list-inline-item">
-                          <a data-toggle="modal" data-target="#deleteModal-{{$status->id}}" title="Delete Status">
+                          <a data-toggle="modal" data-target="#deleteModal-{{$status->id}}" title="Delete Status" type="button">
                             <i class="fas fa-trash-alt text-danger"></i>
                           </a>
                         </li>
@@ -112,7 +112,7 @@
 
                             @if ($reply->user_id === Auth::user()->id)
                             <li class="list-inline-item">
-                              <a data-toggle="modal"  data-target="#deleteModal-{{$reply->id}}" title="Delete Reply">
+                              <a data-toggle="modal"  data-target="#deleteModal-{{$reply->id}}" title="Delete Reply" type="button">
                                 <i class="fas fa-trash-alt text-danger"></i>
                               </a>
                             </li>
