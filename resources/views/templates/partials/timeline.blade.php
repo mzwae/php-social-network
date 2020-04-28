@@ -128,7 +128,7 @@
                             </li>
 
                             @if($reply->updated_at != $reply->created_at)
-                              <li class="list-inline-item">
+                              <li class="list-inline-item" data-toggle="tooltip" title="{{$reply->updated_at}}">
                               Updated: {{$reply->updated_at->diffForHumans()}}
                               </li>
                             @endif
