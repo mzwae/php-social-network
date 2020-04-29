@@ -20,7 +20,8 @@ class HomeController extends Controller
                      ->orWhereIn('user_id', Auth::user()->friends()->pluck('id'));
       })
       ->orderBy('created_at', 'desc')
-      ->paginate(5);
+      ->paginate(3)
+      ;
 
       return view('timeline.index')
             ->with('username', $username)
