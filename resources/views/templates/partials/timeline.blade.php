@@ -220,7 +220,10 @@
                           <!-- Delete Status Button Modal HTML -->
               @include('templates.partials.deletemodal', ['id' => $status->id])
             @endforeach
+
+            {{-- Show pagination links --}}
             {{$statuses->links()}}
+            
         @endif
     </div>
 </div>
