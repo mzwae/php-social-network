@@ -18,10 +18,10 @@ class ProfileController extends Controller
             abort(404);
         }
 
-        $statuses = $user->statuses()->notReply()->get();
-        // dd($authUserIsFriend);
-        // dd(Auth::user());
-        // dd($user);
+        $statuses = $user->statuses()
+        ->notReply()
+        ->orderBy('created_at', 'desc')
+        ->paginate(3);
         
         return view('profile.index')
             ->with('user', $user)
