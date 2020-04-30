@@ -18,7 +18,7 @@
                     </h4>
                     <p>{{$status->body}}</p>
                     <ul class="list-inline">
-                        <li class="list-inline-item">
+                        <li class="list-inline-item" data-toggle="tooltip" title="{{$status->created_at}}">
                           Created: {{$status->created_at->diffForHumans()}}
                         </li>
 
@@ -67,7 +67,7 @@
                         </li>
                         
                         @if($status->updated_at != $status->created_at)
-                          <li class="list-inline-item">
+                          <li class="list-inline-item" data-toggle="tooltip" title="{{$status->updated_at}}">
                             Updated: {{$status->updated_at->diffForHumans()}}
                           </li>
                         @endif
@@ -223,7 +223,7 @@
 
             {{-- Show pagination links --}}
             {{$statuses->links()}}
-            
+
         @endif
     </div>
 </div>
