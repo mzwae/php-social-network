@@ -9,6 +9,10 @@ use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
+    /**
+     * Serving the route...
+     * Route::get('/user/{username}')
+     */
     public function getProfile($username)
     {
         $user = User::where('username', $username)->first();
@@ -34,6 +38,10 @@ class ProfileController extends Controller
         return view('profile.edit');
     }
 
+    /**
+     * Serving the route:
+     * Route::post('/profile/edit')
+     */
     public function postEdit(Request $request)
     {
         $this->validate($request, [
