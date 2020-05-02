@@ -13,34 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="{{route('home')}}\css\modal-styles.css">
-    <style media="screen">
-    
-        #status {
-            /* position: fixed; */
-            width: 100%;
-            font: bold 1em sans-serif;
-            color: #FFF;
-            padding: 0.5em;
-        }
-
-        #log {
-            padding: 2.5em 0.5em 0.5em;
-            font: 1em sans-serif;
-        }
-
-
-        .online {
-            background: green;
-        }
-
-        .offline {
-            background: red;
-        }
-
-        .reply{
-          font-size: 0.8em;
-        }
-    </style>
+    <link rel="stylesheet" href="{{route('home')}}\css\custom.css">
 </head>
 
 <body>
