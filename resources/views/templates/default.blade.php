@@ -19,11 +19,9 @@
 <body>
 
     @include('templates.partials.navigation')
-    <div>
-        <div id="status"></div>
-        <div id="log"></div>
-    </div>
+
     <div class="container">
+        <div id="status"></div>
         @include('templates.partials.alerts')
         @yield('content')
     </div>
