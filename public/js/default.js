@@ -17,8 +17,8 @@ window.addEventListener("load", function() {
     //Online state detector
     function updateOnlineStatus(event) {
         var condition = navigator.onLine
-            ? "alert alert-success"
-            : "alert alert-danger";
+            ? "alert alert-success sticky-top"
+            : "alert alert-danger sticky-top";
         var alert = navigator.onLine ? "Back Online" : "Offline";
 
         if (navigator.onLine) {
