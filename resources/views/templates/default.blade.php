@@ -4,12 +4,11 @@
 <head>
     <meta charset="utf-8">
     <title>SocialWeb 😊</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{route('home')}}\css\bootstrap.min7.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -57,49 +56,6 @@
     </div>
         @include('templates.partials.footer')
 </body>
-<script type="text/javascript">
-
-// tooltip activation
-$(document).ready(function(){
-  $('[data-toggle="tooltip"]').tooltip();
-});
-    window.addEventListener('load', function() {
-        var status = document.getElementById("status");
-        var log = document.getElementById("log");
-
-        //Anonymous function to make alert info display temporary
-        (function(){
-            if ($('div').hasClass('alert-info')) {
-                //Fade out in 10 seconds
-                $(".alert-info").animate({opacity: 0}, 10000);
-            }
-            
-        })();
-
-        function updateOnlineStatus(event) {
-            var condition = navigator.onLine ? "alert alert-success" : "alert alert-danger";
-            var alert = navigator.onLine ? "Back Online" : "Offline";
-
-            if (navigator.onLine) {
-
-                // Wait for 10 seconds
-                // Fade out 
-                $("#status").animate({opacity: 0}, 10000)
-            } else {
-                // Wait for 4 seconds
-                //Fade in
-                $("#status").animate({opacity: 100}, 4000)
-            }
-
-            status.className = condition;
-            status.innerHTML = alert;
-
-            // log.insertAdjacentHTML("beforeend", "Event: " + event.type + "; Status: " + condition);
-        }
-
-        window.addEventListener('online', updateOnlineStatus);
-        window.addEventListener('offline', updateOnlineStatus);
-    });
-</script>
+<script type="text/javascript" src="{{route('home')}}\js\default.js"></script>
 
 </html>
