@@ -19,7 +19,7 @@ window.addEventListener("load", function() {
         var condition = navigator.onLine
             ? "alert alert-success sticky-top"
             : "alert alert-danger sticky-top";
-        var alert = navigator.onLine ? "Back Online" : "Offline";
+        var alert = navigator.onLine ? "You're back Online 😊" : "You've gone offline 😟";
 
         if (navigator.onLine) {
             // Wait for 10 seconds
