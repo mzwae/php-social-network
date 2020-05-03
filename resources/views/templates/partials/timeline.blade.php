@@ -95,7 +95,7 @@
 
                             @if ($reply->user_id === Auth::user()->id)
                               <li class="list-inline-item">
-                                <a title="Edit Status" type="button" data-toggle="modal" data-target="#editModal-{{$reply->id}}">
+                                <a title="Edit Reply" type="button" data-toggle="modal" data-target="#editModal-{{$reply->id}}">
                                   <i class="fas fa-edit text-info"></i>
                                 </a>
                               </li>
@@ -104,7 +104,7 @@
                             {{-- A user shuold not be able to like his own reply --}}
                             @if ($reply->user->isFriendsWith(Auth::user()))
                             <li class="list-inline-item">
-                              <a href="{{route('status.like', ['statusId'=>$reply->id])}}" title="Like reply">
+                              <a href="{{route('status.like', ['statusId'=>$reply->id])}}" title="Like Reply">
                                 <i class="fas fa-thumbs-up"></i>
                               </a>
                             </li>
