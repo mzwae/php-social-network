@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Status;
 use App\Models\Like;
+use App\Models\Status;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -71,9 +71,8 @@ class StatusController extends Controller
             return redirect()->back()->with('info', 'You have already liked this before 😊');
         }
 
-
-        // No need to save the instance as this's handled as a part of the model's create() method
-       $status->likes()->create([
+        // No need to save the instance as this is handled as a part of the model's create() method
+        $status->likes()->create([
             'user_id' => Auth::user()->id,
         ]);
 
@@ -108,7 +107,8 @@ class StatusController extends Controller
 
     }
 
-    public function editStatus(Request $request, $statusId){
+    public function editStatus(Request $request, $statusId)
+    {
         $this->validate($request, [
             'status-body' => 'required|max:1000',
         ]);
@@ -118,7 +118,6 @@ class StatusController extends Controller
         $status->body = $request['status-body'];
 
         $status->save();
-
 
         return redirect()->back()->with('info', 'Updated Successfully 😊');
     }
