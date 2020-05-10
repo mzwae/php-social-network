@@ -139,7 +139,7 @@ Route::post('/status/{statusId}/edit', [
   'middleware' => ['auth'],
 ]);
 
-
+Auth::routes();
 
 
 
